@@ -7,6 +7,7 @@ import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,7 +36,7 @@ public class Product {
     private String productCategory;
 
     @Column(name = "images")
-    private List<String> images;
+    private ArrayList<String> images;
 
     @NotNull
     @Column(name = "short_description")
@@ -52,7 +53,7 @@ public class Product {
     @JsonIgnoreProperties({"product"})
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specification_id", referencedColumnName = "id")
-    private Rating specification;
+    private Specification specification;
 
     @ManyToMany
     @JsonIgnoreProperties({"products"})
@@ -65,6 +66,10 @@ public class Product {
     )
     private List<Colours> colours;
 
+    @Column(name = "isFavourite")
+    private boolean isFavourite;
+
     public void addColour(Colours colour){this.colours.add(colour);}
 
+    public void addImage(String imageUrl){this.images.add(imageUrl);}
 }

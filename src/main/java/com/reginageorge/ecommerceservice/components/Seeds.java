@@ -3,9 +3,11 @@ package com.reginageorge.ecommerceservice.components;
 import com.reginageorge.ecommerceservice.models.Colours;
 import com.reginageorge.ecommerceservice.models.Product;
 import com.reginageorge.ecommerceservice.models.Rating;
+import com.reginageorge.ecommerceservice.models.Specification;
 import com.reginageorge.ecommerceservice.repositories.ColoursRepository;
 import com.reginageorge.ecommerceservice.repositories.ProductRepository;
 import com.reginageorge.ecommerceservice.repositories.RatingsRepository;
+import com.reginageorge.ecommerceservice.repositories.SpecificationRepository;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -27,6 +29,9 @@ public class Seeds implements ApplicationRunner {
 
     @Autowired
     RatingsRepository ratingsRepository;
+
+    @Autowired
+    SpecificationRepository specificationRepository;
 
     public Seeds() {
     }
@@ -78,34 +83,32 @@ public class Seeds implements ApplicationRunner {
         Colours getNude = new Colours("Get Nude", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
         coloursRepository.save(getNude);
 
-        //TODO assign img to black
-        Colours black = new Colours("Carbon Black", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
-        coloursRepository.save(black);
-
-        //TODO assign img to brown
-        Colours brown = new Colours("Brownie", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
-        coloursRepository.save(brown);
-
         //Generate specifications
+        Specification specification1 = new Specification("Lether", "Lace-Up", "Sole: rubber", "39115101", "Timberland");
+        specificationRepository.save(specification1);
 
-
-
-        Product superLipstickStar = Product.builder()
-                .title("Super Lipstick STAR")
-                .price(Money.parse("GBP 18.99"))
-                .productCategory("LIPS")
-                .shortDescription("Our #1 lipstick now with pure, creamy color and incredible shine. Lips are instantly smoother and more voluminous-looking.")
-                .longDescription("Your favorite feel-good, look-great lipstick, now with medium to full-coverage color—and zero shimmer. Universally-flattering, shimmer-free color, in seven creamy shades")
+        Product shoe1 = Product.builder()
+                .title("Foot Cushion")
+                .price(Money.parse("GBP 39.99"))
+                .productCategory("MENS")
+                .images(new ArrayList<>())
+                .shortDescription("High quality foot cushion for all your cushiony needs',\n" +
+                        "    longDescription")
+                .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
                 .rating(new Rating())
+                .specification(new Specification())
                 .colours(new ArrayList<>())
+                .isFavourite(false)
                 .build();
         
-        productRepository.save(superLipstickStar);
-        superLipstickStar.setRating(rating1);
-        superLipstickStar.addColour(red1);
-        superLipstickStar.addColour(blue1);
-        superLipstickStar.addColour(green1);
-        productRepository.save(superLipstickStar);
+        productRepository.save(shoe1);
+        shoe1.setRating(rating1);
+        shoe1.setSpecification(specification1);
+        shoe1.addImage("thisimage.png");
+        shoe1.addColour(red1);
+        shoe1.addColour(blue1);
+        shoe1.addColour(green1);
+        productRepository.save(shoe1);
 
     }
 }
