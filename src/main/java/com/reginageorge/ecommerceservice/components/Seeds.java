@@ -30,6 +30,9 @@ public class Seeds implements ApplicationRunner {
     @Autowired
     SizesRepository sizesRepository;
 
+    @Autowired
+    ProductStockRepository productStockRepository;
+
     public Seeds() {
     }
 
@@ -87,6 +90,19 @@ public class Seeds implements ApplicationRunner {
         //Generate Sizes
         Size size1 = new Size(3.0);
         sizesRepository.save(size1);
+
+        //Generate Product Stock
+        ProductStock stock1 = new ProductStock();
+        productStockRepository.save(stock1);
+        stock1.setSize(size1);
+        stock1.setStock_count(10);
+        productStockRepository.save(stock1);
+
+        ProductStock stock2 = new ProductStock();
+        productStockRepository.save(stock2);
+        stock2.setSize(size1);
+        stock2.setStock_count(5);
+        productStockRepository.save(stock2);
 
         Product shoe1 = Product.builder()
                 .title("Foot Cushion")

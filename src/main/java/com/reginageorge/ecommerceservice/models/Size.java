@@ -1,6 +1,7 @@
 package com.reginageorge.ecommerceservice.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "sizes")
@@ -10,6 +11,9 @@ public class Size {
     private Long size_id;
 
     private double size;
+
+    @OneToMany(mappedBy = "size")
+    Set<ProductStock> productStocks;
 
     public Size() {
     }
