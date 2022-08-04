@@ -92,8 +92,7 @@ public class Seeds implements ApplicationRunner {
                 .price(Money.parse("GBP 39.99"))
                 .productCategory("MENS")
                 .images(new ArrayList<>())
-                .shortDescription("High quality foot cushion for all your cushiony needs',\n" +
-                        "    longDescription")
+                .shortDescription("High quality foot cushion for all your cushiony needs")
                 .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
                 .rating(new Rating())
                 .specification(new Specification())
