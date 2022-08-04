@@ -1,13 +1,7 @@
 package com.reginageorge.ecommerceservice.components;
 
-import com.reginageorge.ecommerceservice.models.Colours;
-import com.reginageorge.ecommerceservice.models.Product;
-import com.reginageorge.ecommerceservice.models.Rating;
-import com.reginageorge.ecommerceservice.models.Specification;
-import com.reginageorge.ecommerceservice.repositories.ColoursRepository;
-import com.reginageorge.ecommerceservice.repositories.ProductRepository;
-import com.reginageorge.ecommerceservice.repositories.RatingsRepository;
-import com.reginageorge.ecommerceservice.repositories.SpecificationRepository;
+import com.reginageorge.ecommerceservice.models.*;
+import com.reginageorge.ecommerceservice.repositories.*;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -32,6 +26,9 @@ public class Seeds implements ApplicationRunner {
 
     @Autowired
     SpecificationRepository specificationRepository;
+
+    @Autowired
+    SizesRepository sizesRepository;
 
     public Seeds() {
     }
@@ -86,6 +83,10 @@ public class Seeds implements ApplicationRunner {
         //Generate specifications
         Specification specification1 = new Specification("Lether", "Lace-Up", "Sole: rubber", "39115101", "Timberland");
         specificationRepository.save(specification1);
+
+        //Generate Sizes
+        Size size1 = new Size(3.0);
+        sizesRepository.save(size1);
 
         Product shoe1 = Product.builder()
                 .title("Foot Cushion")
