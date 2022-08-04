@@ -121,6 +121,7 @@ public class Seeds implements ApplicationRunner {
 
         ProductStock stock2 = new ProductStock();
         productStockRepository.save(stock2);
+        stock2.setProduct(shoe1);
         stock2.setSize(size1);
         stock2.setColour(green1);
         stock2.setStock_count(5);
