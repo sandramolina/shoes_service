@@ -1,5 +1,7 @@
 package com.reginageorge.ecommerceservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -13,6 +15,7 @@ public class Size {
     private double size;
 
     @OneToMany(mappedBy = "size")
+    @JsonIgnoreProperties({"size"})
     Set<ProductStock> productStocks;
 
     public Size() {

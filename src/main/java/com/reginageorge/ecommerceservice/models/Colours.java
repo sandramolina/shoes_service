@@ -18,17 +18,8 @@ public class Colours {
 
     private String colourImage;
 
-    @ManyToMany
-    @JsonIgnoreProperties({"colours"})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "products_colours",
-            joinColumns = {@JoinColumn(name = "colour_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)}
-    )
-    private List<Product> products;
-
     @OneToMany(mappedBy = "colour")
+    @JsonIgnoreProperties({"colour"})
     Set<ProductStock> productStocks;
 
     public Colours() {
@@ -54,14 +45,6 @@ public class Colours {
 
     public void setColourImage(String colourImage) {
         this.colourImage = colourImage;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public Set<ProductStock> getProductStocks() {

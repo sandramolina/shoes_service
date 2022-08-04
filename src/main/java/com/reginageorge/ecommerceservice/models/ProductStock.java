@@ -1,5 +1,7 @@
 package com.reginageorge.ecommerceservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,13 +13,20 @@ public class ProductStock {
 
     private int stock_count;
 
+    @JsonIgnoreProperties({"productStocks"})
     @ManyToOne
     @JoinColumn(name = "size_id")
     Size size;
 
+    @JsonIgnoreProperties({"productStocks"})
     @ManyToOne
     @JoinColumn(name = "colour_id")
     Colours colour;
+
+    @JsonIgnoreProperties({"productStocks"})
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    Product product;
 
     public ProductStock() {
     }
@@ -52,5 +61,13 @@ public class ProductStock {
 
     public void setColour(Colours colour) {
         this.colour = colour;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

@@ -91,9 +91,28 @@ public class Seeds implements ApplicationRunner {
         Size size1 = new Size(3.0);
         sizesRepository.save(size1);
 
+        Product shoe1 = Product.builder()
+                .title("Foot Cushion")
+                .price(Money.parse("GBP 39.99"))
+                .productCategory("MENS")
+                .images(new ArrayList<>())
+                .shortDescription("High quality foot cushion for all your cushiony needs")
+                .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
+                .rating(new Rating())
+                .specification(new Specification())
+                .isFavourite(false)
+                .build();
+        
+        productRepository.save(shoe1);
+        shoe1.setRating(rating1);
+        shoe1.setSpecification(specification1);
+        shoe1.addImage("thisimage.png");
+        productRepository.save(shoe1);
+
         //Generate Product Stock
         ProductStock stock1 = new ProductStock();
         productStockRepository.save(stock1);
+        stock1.setProduct(shoe1);
         stock1.setSize(size1);
         stock1.setColour(red1);
         stock1.setStock_count(10);
@@ -107,28 +126,6 @@ public class Seeds implements ApplicationRunner {
         stock2.setStock_count(5);
 
         productStockRepository.save(stock2);
-
-        Product shoe1 = Product.builder()
-                .title("Foot Cushion")
-                .price(Money.parse("GBP 39.99"))
-                .productCategory("MENS")
-                .images(new ArrayList<>())
-                .shortDescription("High quality foot cushion for all your cushiony needs")
-                .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
-                .rating(new Rating())
-                .specification(new Specification())
-                .colours(new ArrayList<>())
-                .isFavourite(false)
-                .build();
-        
-        productRepository.save(shoe1);
-        shoe1.setRating(rating1);
-        shoe1.setSpecification(specification1);
-        shoe1.addImage("thisimage.png");
-        shoe1.addColour(red1);
-        shoe1.addColour(blue1);
-        shoe1.addColour(green1);
-        productRepository.save(shoe1);
 
     }
 }
