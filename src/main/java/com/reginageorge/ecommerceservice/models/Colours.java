@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "colours")
@@ -26,6 +27,9 @@ public class Colours {
             inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)}
     )
     private List<Product> products;
+
+    @OneToMany(mappedBy = "colour")
+    Set<ProductStock> productStocks;
 
     public Colours() {
     }
@@ -50,5 +54,21 @@ public class Colours {
 
     public void setColourImage(String colourImage) {
         this.colourImage = colourImage;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public Set<ProductStock> getProductStocks() {
+        return productStocks;
+    }
+
+    public void setProductStocks(Set<ProductStock> productStocks) {
+        this.productStocks = productStocks;
     }
 }

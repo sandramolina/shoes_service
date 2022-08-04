@@ -15,6 +15,10 @@ public class ProductStock {
     @JoinColumn(name = "size_id")
     Size size;
 
+    @ManyToOne
+    @JoinColumn(name = "colour_id")
+    Colours colour;
+
     public ProductStock() {
     }
 
@@ -40,5 +44,13 @@ public class ProductStock {
 
     public void setSize(Size size) {
         this.size = size;
+    }
+
+    public Colours getColour() {
+        return colour;
+    }
+
+    public void setColour(Colours colour) {
+        this.colour = colour;
     }
 }
