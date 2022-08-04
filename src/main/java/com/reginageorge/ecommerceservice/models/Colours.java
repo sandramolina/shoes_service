@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "colours")
@@ -17,15 +18,9 @@ public class Colours {
 
     private String colourImage;
 
-    @ManyToMany
-    @JsonIgnoreProperties({"colours"})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "products_colours",
-            joinColumns = {@JoinColumn(name = "colour_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)}
-    )
-    private List<Product> products;
+    @OneToMany(mappedBy = "colour")
+    @JsonIgnoreProperties({"colour"})
+    Set<ProductStock> productStocks;
 
     public Colours() {
     }
@@ -50,5 +45,13 @@ public class Colours {
 
     public void setColourImage(String colourImage) {
         this.colourImage = colourImage;
+    }
+
+    public Set<ProductStock> getProductStocks() {
+        return productStocks;
+    }
+
+    public void setProductStocks(Set<ProductStock> productStocks) {
+        this.productStocks = productStocks;
     }
 }

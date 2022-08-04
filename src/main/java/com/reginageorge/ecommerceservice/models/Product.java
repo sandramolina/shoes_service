@@ -9,6 +9,7 @@ import org.joda.money.Money;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -55,21 +56,13 @@ public class Product {
     @JoinColumn(name = "specification_id", referencedColumnName = "id")
     private Specification specification;
 
-    @ManyToMany
-    @JsonIgnoreProperties({"products"})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @Column(name = "colours")
-    @JoinTable(
-            name = "products_colours",
-            joinColumns = {@JoinColumn(name = "product_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "colour_id", nullable = false, updatable = false)}
-    )
-    private List<Colours> colours;
-
     @Column(name = "isFavourite")
     private boolean isFavourite;
 
-    public void addColour(Colours colour){this.colours.add(colour);}
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnoreProperties({"product"})
+    Set<ProductStock> productStocks;
 
     public void addImage(String imageUrl){this.images.add(imageUrl);}
 }

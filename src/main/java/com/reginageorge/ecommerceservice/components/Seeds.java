@@ -1,13 +1,7 @@
 package com.reginageorge.ecommerceservice.components;
 
-import com.reginageorge.ecommerceservice.models.Colours;
-import com.reginageorge.ecommerceservice.models.Product;
-import com.reginageorge.ecommerceservice.models.Rating;
-import com.reginageorge.ecommerceservice.models.Specification;
-import com.reginageorge.ecommerceservice.repositories.ColoursRepository;
-import com.reginageorge.ecommerceservice.repositories.ProductRepository;
-import com.reginageorge.ecommerceservice.repositories.RatingsRepository;
-import com.reginageorge.ecommerceservice.repositories.SpecificationRepository;
+import com.reginageorge.ecommerceservice.models.*;
+import com.reginageorge.ecommerceservice.repositories.*;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -32,6 +26,12 @@ public class Seeds implements ApplicationRunner {
 
     @Autowired
     SpecificationRepository specificationRepository;
+
+    @Autowired
+    SizesRepository sizesRepository;
+
+    @Autowired
+    ProductStockRepository productStockRepository;
 
     public Seeds() {
     }
@@ -87,6 +87,10 @@ public class Seeds implements ApplicationRunner {
         Specification specification1 = new Specification("Lether", "Lace-Up", "Sole: rubber", "39115101", "Timberland");
         specificationRepository.save(specification1);
 
+        //Generate Sizes
+        Size size1 = new Size(3.0);
+        sizesRepository.save(size1);
+
         Product shoe1 = Product.builder()
                 .title("Foot Cushion")
                 .price(Money.parse("GBP 39.99"))
@@ -96,7 +100,6 @@ public class Seeds implements ApplicationRunner {
                 .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
                 .rating(new Rating())
                 .specification(new Specification())
-                .colours(new ArrayList<>())
                 .isFavourite(false)
                 .build();
         
@@ -104,10 +107,26 @@ public class Seeds implements ApplicationRunner {
         shoe1.setRating(rating1);
         shoe1.setSpecification(specification1);
         shoe1.addImage("thisimage.png");
-        shoe1.addColour(red1);
-        shoe1.addColour(blue1);
-        shoe1.addColour(green1);
         productRepository.save(shoe1);
+
+        //Generate Product Stock
+        ProductStock stock1 = new ProductStock();
+        productStockRepository.save(stock1);
+        stock1.setProduct(shoe1);
+        stock1.setSize(size1);
+        stock1.setColour(red1);
+        stock1.setStock_count(10);
+
+        productStockRepository.save(stock1);
+
+        ProductStock stock2 = new ProductStock();
+        productStockRepository.save(stock2);
+        stock2.setProduct(shoe1);
+        stock2.setSize(size1);
+        stock2.setColour(green1);
+        stock2.setStock_count(5);
+
+        productStockRepository.save(stock2);
 
     }
 }
