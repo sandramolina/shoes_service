@@ -1,7 +1,7 @@
-package com.reginageorge.ecommerceservice.controllers;
+package com.goldenshoe.ecommerceservice.controllers;
 
-import com.reginageorge.ecommerceservice.models.Product;
-import com.reginageorge.ecommerceservice.repositories.ProductRepository;
+import com.goldenshoe.ecommerceservice.repositories.ProductRepository;
+import com.goldenshoe.ecommerceservice.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

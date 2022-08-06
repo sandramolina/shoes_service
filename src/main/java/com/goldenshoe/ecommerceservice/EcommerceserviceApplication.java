@@ -1,4 +1,4 @@
-package com.reginageorge.ecommerceservice;
+package com.goldenshoe.ecommerceservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

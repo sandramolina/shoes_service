@@ -1,14 +1,12 @@
-package com.reginageorge.ecommerceservice.models;
+package com.goldenshoe.ecommerceservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -55,10 +53,6 @@ public class Product {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specification_id", referencedColumnName = "id")
     private Specification specification;
-
-    @Column(name = "isFavourite")
-    private boolean isFavourite;
-
 
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties({"product"})

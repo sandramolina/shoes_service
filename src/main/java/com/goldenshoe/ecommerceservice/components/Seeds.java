@@ -1,7 +1,7 @@
-package com.reginageorge.ecommerceservice.components;
+package com.goldenshoe.ecommerceservice.components;
 
-import com.reginageorge.ecommerceservice.models.*;
-import com.reginageorge.ecommerceservice.repositories.*;
+import com.goldenshoe.ecommerceservice.models.*;
+import com.goldenshoe.ecommerceservice.repositories.*;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -100,7 +100,6 @@ public class Seeds implements ApplicationRunner {
                 .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
                 .rating(new Rating())
                 .specification(new Specification())
-                .isFavourite(false)
                 .build();
         
         productRepository.save(shoe1);
