@@ -1,6 +1,6 @@
-package com.reginageorge.ecommerceservice.repositories;
+package com.goldenshoe.ecommerceservice.repositories;
 
-import com.reginageorge.ecommerceservice.models.ProductStock;
+import com.goldenshoe.ecommerceservice.models.ProductStock;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductStockRepository extends JpaRepository<ProductStock, Long> {

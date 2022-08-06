@@ -1,14 +1,12 @@
-package com.reginageorge.ecommerceservice.models;
+package com.goldenshoe.ecommerceservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 import org.joda.money.Money;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,6 +37,21 @@ public class Product {
     @Column(name = "images")
     private ArrayList<String> images;
 
+    @Column(name = "mainShoeMaterial")
+    private String mainShoeMaterial;
+
+    @Column(name = "fastening")
+    private String fastening;
+
+    @Column(name = "rubber")
+    private String rubber;
+
+    @Column(name = "productCode")
+    private String productCode;
+
+    @Column(name = "brand")
+    private String brand;
+
     @NotNull
     @Column(name = "short_description")
     private String shortDescription;
@@ -50,15 +63,6 @@ public class Product {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating rating;
-
-    @JsonIgnoreProperties({"product"})
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "specification_id", referencedColumnName = "id")
-    private Specification specification;
-
-    @Column(name = "isFavourite")
-    private boolean isFavourite;
-
 
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties({"product"})

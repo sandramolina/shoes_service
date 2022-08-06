@@ -1,7 +1,7 @@
-package com.reginageorge.ecommerceservice.components;
+package com.goldenshoe.ecommerceservice.components;
 
-import com.reginageorge.ecommerceservice.models.*;
-import com.reginageorge.ecommerceservice.repositories.*;
+import com.goldenshoe.ecommerceservice.models.*;
+import com.goldenshoe.ecommerceservice.repositories.*;
 import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -23,9 +23,6 @@ public class Seeds implements ApplicationRunner {
 
     @Autowired
     RatingsRepository ratingsRepository;
-
-    @Autowired
-    SpecificationRepository specificationRepository;
 
     @Autowired
     SizesRepository sizesRepository;
@@ -83,9 +80,9 @@ public class Seeds implements ApplicationRunner {
         Colours getNude = new Colours("Get Nude", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
         coloursRepository.save(getNude);
 
-        //Generate specifications
-        Specification specification1 = new Specification("Lether", "Lace-Up", "Sole: rubber", "39115101", "Timberland");
-        specificationRepository.save(specification1);
+//        //Generate specifications
+//        Specification specification1 = new Specification("Lether", , ", , );
+//        specificationRepository.save(specification1);
 
         //Generate Sizes
         Size size1 = new Size(3.0);
@@ -96,17 +93,20 @@ public class Seeds implements ApplicationRunner {
                 .price(Money.parse("GBP 39.99"))
                 .productCategory("MENS")
                 .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Lace-Up")
+                .rubber("Sole: rubber")
+                .productCode("39115101")
+                .brand("Timberland")
                 .shortDescription("High quality foot cushion for all your cushiony needs")
                 .longDescription("These Timberland shoes are classic and contemporary at the same time. As well as using recycled rubber for the soles, the linings have been made from recycled plastic bottles, creating an eco-friendly product.")
                 .rating(new Rating())
-                .specification(new Specification())
-                .isFavourite(false)
                 .build();
         
         productRepository.save(shoe1);
         shoe1.setRating(rating1);
-        shoe1.setSpecification(specification1);
-        shoe1.addImage("thisimage.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/foundation-01.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipBalm.png");
         productRepository.save(shoe1);
 
         //Generate Product Stock

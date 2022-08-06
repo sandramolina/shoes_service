@@ -1,4 +1,4 @@
-package com.reginageorge.ecommerceservice.models;
+package com.goldenshoe.ecommerceservice.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

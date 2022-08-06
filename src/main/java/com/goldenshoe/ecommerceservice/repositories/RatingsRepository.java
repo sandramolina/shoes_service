@@ -1,6 +1,6 @@
-package com.reginageorge.ecommerceservice.repositories;
+package com.goldenshoe.ecommerceservice.repositories;
 
-import com.reginageorge.ecommerceservice.models.Rating;
+import com.goldenshoe.ecommerceservice.models.Rating;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RatingsRepository extends JpaRepository<Rating, Long> {

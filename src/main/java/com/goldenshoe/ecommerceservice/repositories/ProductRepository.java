@@ -1,6 +1,6 @@
-package com.reginageorge.ecommerceservice.repositories;
+package com.goldenshoe.ecommerceservice.repositories;
 
-import com.reginageorge.ecommerceservice.models.Product;
+import com.goldenshoe.ecommerceservice.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
