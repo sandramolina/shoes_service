@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-//@Component
+@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
@@ -37,48 +37,39 @@ public class Seeds implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         //Generate Ratings
-        Rating rating1 = new Rating(4.5, 4500);
+        Rating rating1 = new Rating(4.5, 15);
         ratingsRepository.save(rating1);
 
-        Rating rating2 = new Rating(3.5, 600);
+        Rating rating2 = new Rating(3.5, 55);
         ratingsRepository.save(rating2);
 
-        Rating rating3 = new Rating(3.8, 600);
-        ratingsRepository.save(rating3);
-
-        Rating rating4 = new Rating(4.5, 1200);
-        ratingsRepository.save(rating3);
-
-        Rating rating5 = new Rating(2.5, 869);
-        ratingsRepository.save(rating3);
-
-        Rating rating6 = new Rating(3.5, 362);
-        ratingsRepository.save(rating3);
-
-        Rating rating7 = new Rating(4.5, 58);
-        ratingsRepository.save(rating3);
-
-        Rating rating8 = new Rating(5.0, 458);
-        ratingsRepository.save(rating3);
+//        Rating rating3 = new Rating(3.8, 600);
+//        ratingsRepository.save(rating3);
+//
+//        Rating rating4 = new Rating(4.5, 1200);
+//        ratingsRepository.save(rating3);
+//
+//        Rating rating5 = new Rating(2.5, 869);
+//        ratingsRepository.save(rating3);
+//
+//        Rating rating6 = new Rating(3.5, 362);
+//        ratingsRepository.save(rating3);
+//
+//        Rating rating7 = new Rating(4.5, 58);
+//        ratingsRepository.save(rating3);
+//
+//        Rating rating8 = new Rating(5.0, 458);
+//        ratingsRepository.save(rating3);
 
         //Generate Colours
-        Colours red1 = new Colours("Passion Red", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-red.png");
-        coloursRepository.save(red1);
+        Colours blackShiny = new Colours("Shiny Black", "https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/colours/black.png");
+        coloursRepository.save(blackShiny);
 
-        Colours blue1 = new Colours("React Blue", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-react-blue.png");
-        coloursRepository.save(blue1);
+        Colours darkBlue = new Colours("Dark Blue", "https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/colours/dark-blue.png");
+        coloursRepository.save(darkBlue);
 
-        Colours green1 = new Colours("Emerald", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-emerald.png");
-        coloursRepository.save(green1);
-
-        Colours rosyMauve = new Colours("Rosy Mauve", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-rosy-maeve.png");
-        coloursRepository.save(rosyMauve);
-
-        Colours hotPink = new Colours("Hot Pink", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-hot-pink.png");
-        coloursRepository.save(hotPink);
-
-        Colours getNude = new Colours("Get Nude", "https://raw.githubusercontent.com/sandramolina/assets/main/colors/color-getnude.png");
-        coloursRepository.save(getNude);
+        Colours brownOne = new Colours("Brown", "https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/colours/brown.png");
+        coloursRepository.save(brownOne);
 
 //        //Generate specifications
 //        Specification specification1 = new Specification("Lether", , ", , );
@@ -95,7 +86,7 @@ public class Seeds implements ApplicationRunner {
                 .images(new ArrayList<>())
                 .mainShoeMaterial("Leather")
                 .fastening("Lace-Up")
-                .rubber("Sole: rubber")
+                .rubber("Rubber")
                 .productCode("39115101")
                 .brand("Timberland")
                 .shortDescription("High quality foot cushion for all your cushiony needs")
@@ -105,8 +96,9 @@ public class Seeds implements ApplicationRunner {
         
         productRepository.save(shoe1);
         shoe1.setRating(rating1);
-        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/foundation-01.png");
-        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipBalm.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-2.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-3.png");
         productRepository.save(shoe1);
 
         //Generate Product Stock
@@ -114,7 +106,7 @@ public class Seeds implements ApplicationRunner {
         productStockRepository.save(stock1);
         stock1.setProduct(shoe1);
         stock1.setSize(size1);
-        stock1.setColour(red1);
+        stock1.setColour(blackShiny);
         stock1.setStock_count(10);
 
         productStockRepository.save(stock1);
@@ -123,7 +115,7 @@ public class Seeds implements ApplicationRunner {
         productStockRepository.save(stock2);
         stock2.setProduct(shoe1);
         stock2.setSize(size1);
-        stock2.setColour(green1);
+        stock2.setColour(darkBlue);
         stock2.setStock_count(5);
 
         productStockRepository.save(stock2);
