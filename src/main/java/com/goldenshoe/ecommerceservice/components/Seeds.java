@@ -105,7 +105,8 @@ public class Seeds implements ApplicationRunner {
         
         productRepository.save(shoe1);
         shoe1.setRating(rating1);
-        shoe1.addImage("thisimage.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/foundation-01.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/products/lipBalm.png");
         productRepository.save(shoe1);
 
         //Generate Product Stock
