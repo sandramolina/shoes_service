@@ -37,6 +37,21 @@ public class Product {
     @Column(name = "images")
     private ArrayList<String> images;
 
+    @Column(name = "mainShoeMaterial")
+    private String mainShoeMaterial;
+
+    @Column(name = "fastening")
+    private String fastening;
+
+    @Column(name = "rubber")
+    private String rubber;
+
+    @Column(name = "productCode")
+    private String productCode;
+
+    @Column(name = "brand")
+    private String brand;
+
     @NotNull
     @Column(name = "short_description")
     private String shortDescription;
@@ -48,11 +63,6 @@ public class Product {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rating_id", referencedColumnName = "id")
     private Rating rating;
-
-    @JsonIgnoreProperties({"product"})
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "specification_id", referencedColumnName = "id")
-    private Specification specification;
 
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties({"product"})
