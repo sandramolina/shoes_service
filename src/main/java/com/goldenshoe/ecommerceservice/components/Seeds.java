@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-@Component
+//@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
@@ -79,6 +79,12 @@ public class Seeds implements ApplicationRunner {
         Size size1 = new Size(3.0);
         sizesRepository.save(size1);
 
+        Size size2 = new Size(3.5);
+        sizesRepository.save(size2);
+
+        Size size3 = new Size(4.0);
+        sizesRepository.save(size3);
+
         Product shoe1 = Product.builder()
                 .title("Foot Cushion")
                 .price(Money.parse("GBP 39.99"))
@@ -114,12 +120,20 @@ public class Seeds implements ApplicationRunner {
         ProductStock stock2 = new ProductStock();
         productStockRepository.save(stock2);
         stock2.setProduct(shoe1);
-        stock2.setSize(size1);
+        stock2.setSize(size3);
         stock2.setColour(darkBlue);
         stock2.setStock_count(5);
 
         productStockRepository.save(stock2);
 
+        ProductStock stock3 = new ProductStock();
+        productStockRepository.save(stock3);
+        stock3.setProduct(shoe1);
+        stock3.setSize(size2);
+        stock3.setColour(blackShiny);
+        stock3.setStock_count(10);
+
+        productStockRepository.save(stock3);
     }
 }
 
