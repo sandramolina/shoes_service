@@ -105,6 +105,9 @@ public class Seeds implements ApplicationRunner {
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-2.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-3.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men-2.png");
+        shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men-3.png");
         productRepository.save(shoe1);
 
         //Generate Product Stock
