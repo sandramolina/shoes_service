@@ -43,23 +43,23 @@ public class Seeds implements ApplicationRunner {
         Rating rating2 = new Rating(3.5, 55);
         ratingsRepository.save(rating2);
 
-//        Rating rating3 = new Rating(3.8, 600);
-//        ratingsRepository.save(rating3);
-//
-//        Rating rating4 = new Rating(4.5, 1200);
-//        ratingsRepository.save(rating3);
-//
-//        Rating rating5 = new Rating(2.5, 869);
-//        ratingsRepository.save(rating3);
-//
-//        Rating rating6 = new Rating(3.5, 362);
-//        ratingsRepository.save(rating3);
-//
-//        Rating rating7 = new Rating(4.5, 58);
-//        ratingsRepository.save(rating3);
-//
-//        Rating rating8 = new Rating(5.0, 458);
-//        ratingsRepository.save(rating3);
+        Rating rating3 = new Rating(3.8, 60);
+        ratingsRepository.save(rating3);
+
+        Rating rating4 = new Rating(4.5, 120);
+        ratingsRepository.save(rating3);
+
+        Rating rating5 = new Rating(2.5, 869);
+        ratingsRepository.save(rating3);
+
+        Rating rating6 = new Rating(3.5, 362);
+        ratingsRepository.save(rating3);
+
+        Rating rating7 = new Rating(4.5, 58);
+        ratingsRepository.save(rating3);
+
+        Rating rating8 = new Rating(5.0, 458);
+        ratingsRepository.save(rating3);
 
         //Generate Colours
         Colours blackShiny = new Colours("Shiny Black", "https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/colours/black.png");
@@ -75,7 +75,7 @@ public class Seeds implements ApplicationRunner {
 //        Specification specification1 = new Specification("Lether", , ", , );
 //        specificationRepository.save(specification1);
 
-        //Generate Sizes
+        //region Generate Sizes
         Size size3 = new Size(3.0);
         sizesRepository.save(size3);
 
@@ -96,9 +96,11 @@ public class Seeds implements ApplicationRunner {
 
         Size size8 = new Size(8.0);
         sizesRepository.save(size8);
+        //endregion
 
+        //region shoe1 build
         Product shoe1 = Product.builder()
-                .title("Mayfair Dress")
+                .title("Mayfair Dress Shoes")
                 .price(Money.parse("GBP 39.99"))
                 .productCategory("MENS")
                 .images(new ArrayList<>())
@@ -113,7 +115,7 @@ public class Seeds implements ApplicationRunner {
                 .build();
         
         productRepository.save(shoe1);
-        //region images shoe1
+
         shoe1.setRating(rating1);
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-2.png");
@@ -153,6 +155,7 @@ public class Seeds implements ApplicationRunner {
         productRepository.save(shoe1);
         //endregion
 
+        //region shoe2 build
         Product shoe2 = Product.builder()
                 .title("Rivington Derby")
                 .price(Money.parse("GBP 94.99"))
@@ -173,6 +176,7 @@ public class Seeds implements ApplicationRunner {
         shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men.png");
         shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men-2.png");
         shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men-3.png");
+        //endregion
 
         //region Generate shoe2 Stock
         ProductStock stock4 = new ProductStock();
@@ -200,6 +204,171 @@ public class Seeds implements ApplicationRunner {
         productStockRepository.save(stock6);
 
         productRepository.save(shoe2);
+        //endregion
+
+        //region shoe3
+        Product shoe3 = Product.builder()
+                .title("Tassel Loafers")
+                .price(Money.parse("GBP 89.99"))
+                .productCategory("MENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Lace-Up")
+                .rubber("Synthetic")
+                .productCode("44249507")
+                .brand("John Lewis")
+                .shortDescription("Our tassel loafers are an effortlessly suave choice for smart casual styling.")
+                .longDescription("Made from smooth leather in a classic slip-on design, they will combine equally neatly with tailoring or casual chinos.")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe3);
+        shoe3.setRating(rating3);
+        shoe3.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-loafers-men.png");
+        shoe3.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-loafers-men-2.png");
+        shoe3.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-loafers-men-3.png");
+
+        ProductStock stock7 = new ProductStock();
+        productStockRepository.save(stock7);
+        stock7.setProduct(shoe3);
+        stock7.setSize(size8);
+        stock7.setColour(brownOne);
+        stock7.setStock_count(5);
+        productStockRepository.save(stock7);
+
+        productRepository.save(shoe3);
+        //endregion
+
+        //region shoe4
+        Product shoe4 = Product.builder()
+                .title("Leather Brogues")
+                .price(Money.parse("GBP 59.95"))
+                .productCategory("MENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Lace-Up")
+                .rubber("Rubber")
+                .productCode("50581478")
+                .brand("Moss")
+                .shortDescription("These Moss brogues offer a smart option for work or for evening events.")
+                .longDescription("With a leather upper, they feature classic broguing details and come complete with a stacked contrasting heel. Made from smooth leather in a classic slip-on design, they will combine equally neatly with tailoring or casual chinos.")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe4);
+        shoe4.setRating(rating4);
+        shoe4.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-brogues-men.png");
+        shoe4.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-brogues-men-2.png");
+        shoe4.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-brogues-men-3.png");
+
+        ProductStock stock8 = new ProductStock();
+        productStockRepository.save(stock8);
+        stock8.setProduct(shoe4);
+        stock8.setSize(size8);
+        stock8.setColour(brownOne);
+        stock8.setStock_count(5);
+        productStockRepository.save(stock8);
+
+        productRepository.save(shoe4);
+        //endregion
+
+        //region shoe5
+        Product shoe5 = Product.builder()
+                .title("Couture Bloom")
+                .price(Money.parse("GBP 47.50"))
+                .productCategory("WOMENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Elastic")
+                .rubber("Rubber")
+                .productCode("57581478")
+                .brand("Clarks")
+                .shortDescription("Couture Bloom, women's pumps, black leather - A timeless classic.")
+                .longDescription("these pumps have been subtly refined with an ultra-feminine toe shape and bow detailing. Made from smooth leather in a classic slip-on design, they will combine equally neatly with tailoring or casual chinos.")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe5);
+        shoe5.setRating(rating5);
+        shoe5.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-couture-bloom-women.png");
+        shoe5.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-couture-bloom-women-2.png");
+        shoe5.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-couture-bloom-women-3.png");
+
+        ProductStock stock9 = new ProductStock();
+        productStockRepository.save(stock9);
+        stock9.setProduct(shoe5);
+        stock9.setSize(size8);
+        stock9.setColour(blackShiny);
+        stock9.setStock_count(5);
+        productStockRepository.save(stock9);
+
+        productRepository.save(shoe5);
+        //endregion
+
+        //region shoe6
+        Product shoe6 = Product.builder()
+                .title("The Teala Loafer")
+                .price(Money.parse("GBP 70.99"))
+                .productCategory("WOMENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Elastic")
+                .rubber("TR")
+                .productCode("57581478")
+                .brand("Clarks")
+                .shortDescription("Super-chunky soles are still having a moment (and we think they’re here to stay). Teala Loafer’s classic tasselled finish teams with a statement.")
+                .longDescription("These chunky have been subtly refined with an ultra-feminine toe shape and bow detailing. Made from smooth leather in a classic slip-on design, they will combine equally neatly with tailoring or casual chinos.")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe6);
+        shoe6.setRating(rating6);
+        shoe6.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-teala-loafers-women.png");
+        shoe6.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-teala-loafers-women-2.png");
+        shoe6.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-teala-loafers-women-3.png");
+
+        ProductStock stock10 = new ProductStock();
+        productStockRepository.save(stock10);
+        stock10.setProduct(shoe6);
+        stock10.setSize(size65);
+        stock10.setColour(blackShiny);
+        stock10.setStock_count(5);
+        productStockRepository.save(stock10);
+
+        productRepository.save(shoe6);
+        //endregion
+
+        //region shoe7
+        Product shoe7 = Product.builder()
+                .title("Victoria 55 RAE")
+                .price(Money.parse("GBP 79.99"))
+                .productCategory("WOMENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Elastic")
+                .rubber("Resin Rubber")
+                .productCode("87581478")
+                .brand("Clarks")
+                .shortDescription("The timeless classic taking you from the business to cocktail hour .")
+                .longDescription("55 Rae heeled shoe. In British tan leather for a premium feel, it works an elegant pointed toe, versatile mid-heel and soft cushioning, creating the sophisticated heel you’ve been waiting for.")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe7);
+        shoe7.setRating(rating6);
+        shoe7.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-rae-women.png");
+        shoe7.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-rae-women-2.png");
+        shoe7.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/brown-rae-women-3.png");
+
+        ProductStock stock11 = new ProductStock();
+        productStockRepository.save(stock11);
+        stock11.setProduct(shoe7);
+        stock11.setSize(size65);
+        stock11.setColour(brownOne);
+        stock11.setStock_count(5);
+        productStockRepository.save(stock11);
+
+        productRepository.save(shoe7);
         //endregion
     }
 }
