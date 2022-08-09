@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Profile("!test")
-//@Component
+@Component
 public class Seeds implements ApplicationRunner {
 
     @Autowired
@@ -76,17 +76,29 @@ public class Seeds implements ApplicationRunner {
 //        specificationRepository.save(specification1);
 
         //Generate Sizes
-        Size size1 = new Size(3.0);
-        sizesRepository.save(size1);
-
-        Size size2 = new Size(3.5);
-        sizesRepository.save(size2);
-
-        Size size3 = new Size(4.0);
+        Size size3 = new Size(3.0);
         sizesRepository.save(size3);
 
+        Size size5 = new Size(5.0);
+        sizesRepository.save(size5);
+
+        Size size6 = new Size(6.0);
+        sizesRepository.save(size6);
+
+        Size size65 = new Size(6.5);
+        sizesRepository.save(size65);
+
+        Size size7 = new Size(7.0);
+        sizesRepository.save(size7);
+
+        Size size75 = new Size(7.5);
+        sizesRepository.save(size75);
+
+        Size size8 = new Size(8.0);
+        sizesRepository.save(size8);
+
         Product shoe1 = Product.builder()
-                .title("Foot Cushion")
+                .title("Mayfair Dress")
                 .price(Money.parse("GBP 39.99"))
                 .productCategory("MENS")
                 .images(new ArrayList<>())
@@ -101,6 +113,7 @@ public class Seeds implements ApplicationRunner {
                 .build();
         
         productRepository.save(shoe1);
+        //region images shoe1
         shoe1.setRating(rating1);
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/black-Foot-Cushion-men-2.png");
@@ -108,13 +121,13 @@ public class Seeds implements ApplicationRunner {
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men-2.png");
         shoe1.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/blue-Foot-Cushion-men-3.png");
-        productRepository.save(shoe1);
+        //endregion s
 
-        //Generate Product Stock
+        //region Generate shoe1 Stock
         ProductStock stock1 = new ProductStock();
         productStockRepository.save(stock1);
         stock1.setProduct(shoe1);
-        stock1.setSize(size1);
+        stock1.setSize(size6);
         stock1.setColour(blackShiny);
         stock1.setStock_count(10);
 
@@ -123,7 +136,7 @@ public class Seeds implements ApplicationRunner {
         ProductStock stock2 = new ProductStock();
         productStockRepository.save(stock2);
         stock2.setProduct(shoe1);
-        stock2.setSize(size3);
+        stock2.setSize(size6);
         stock2.setColour(darkBlue);
         stock2.setStock_count(5);
 
@@ -132,11 +145,62 @@ public class Seeds implements ApplicationRunner {
         ProductStock stock3 = new ProductStock();
         productStockRepository.save(stock3);
         stock3.setProduct(shoe1);
-        stock3.setSize(size2);
+        stock3.setSize(size5);
         stock3.setColour(blackShiny);
         stock3.setStock_count(10);
-
         productStockRepository.save(stock3);
+
+        productRepository.save(shoe1);
+        //endregion
+
+        Product shoe2 = Product.builder()
+                .title("Rivington Derby")
+                .price(Money.parse("GBP 94.99"))
+                .productCategory("MENS")
+                .images(new ArrayList<>())
+                .mainShoeMaterial("Leather")
+                .fastening("Lace-Up")
+                .rubber("Microlite")
+                .productCode("39120101")
+                .brand("Moss")
+                .shortDescription("For that ultra-polished look, these patent leather dress shoes from Moss London are a great go-to option.")
+                .longDescription("If you've got an excuse to dress up, take the black-tie style to another level with the help of these patent leather oxfords. With their highly polished uppers, they're the perfect accompaniment to a suave black jacket and trouser combo")
+                .rating(new Rating())
+                .build();
+
+        productRepository.save(shoe2);
+        shoe2.setRating(rating2);
+        shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men.png");
+        shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men-2.png");
+        shoe2.addImage("https://raw.githubusercontent.com/sandramolina/assets/main/golden_shoe_ecommerce/shoes/dark-blue-verona-men-3.png");
+
+        //region Generate shoe2 Stock
+        ProductStock stock4 = new ProductStock();
+        productStockRepository.save(stock4);
+        stock4.setProduct(shoe2);
+        stock4.setSize(size6);
+        stock4.setColour(darkBlue);
+        stock4.setStock_count(5);
+        productStockRepository.save(stock4);
+
+        ProductStock stock5 = new ProductStock();
+        productStockRepository.save(stock5);
+        stock5.setProduct(shoe2);
+        stock5.setSize(size8);
+        stock5.setColour(darkBlue);
+        stock5.setStock_count(15);
+        productStockRepository.save(stock5);
+
+        ProductStock stock6 = new ProductStock();
+        productStockRepository.save(stock6);
+        stock6.setProduct(shoe2);
+        stock6.setSize(size75);
+        stock6.setColour(darkBlue);
+        stock6.setStock_count(15);
+        productStockRepository.save(stock6);
+
+        productRepository.save(shoe2);
+        //endregion
     }
 }
 
